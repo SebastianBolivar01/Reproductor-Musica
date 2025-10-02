@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Music Player</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="player-container">
+    <!-- Header -->
+    <div class="player-header">
+        <h2>Reproductor</h2>
+    </div>
+
+    <!-- Contenido principal: álbum + playlist -->
+    <div class="player-content">
+        <!-- Sección del álbum -->
+        <div class="album-section">
+            <div class="album-cover">
+                <img src="musica.png" alt="Album Cover" />
+            </div>
+        </div>
+
+        <!-- Sección de playlist -->
+        <div class="playlist-section">
+            <div class="playlist-header">
+                <div class="playlist-title">Lista de Reproducción</div>
+                <div class="file-input-wrapper">
+                    <button id="deleteAllBtn" title="Eliminar todas las canciones">🧹</button>
+                    <input type="file" id="fileInput" multiple accept="audio/*">
+                </div>
+            </div>
+            <div id="playlist">
+                <!-- Las canciones se cargarán aquí dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Reproductor de audio (oculto) -->
+    <audio id="audio"></audio>
+
+    <!-- Controles del reproductor -->
+    <div class="player-controls">
+        <div class="now-playing-info">
+            <h2 id="current-song">Selecciona una canción</h2>
+            <span id="current-time">0:00</span> / <span id="duration">0:00</span>
+        </div>
+        
+        <div class="progress-container">
+            <input type="range" id="progressBar" class="progress-bar" value="0" min="0" max="100" step="1">
+        </div>
+        
+        <div class="controls">
+            <button onclick="playSong(currentIndex-1)" title="Anterior">⏮</button>
+            <button onclick="audio.play()" title="Reproducir">▶</button>
+            <button onclick="audio.pause()" title="Pausar">⏸</button>
+            <button onclick="stopSong()" title="Detener">⏹</button>
+            <button onclick="playSong(currentIndex+1)" title="Siguiente">⏭</button>
+        </div>
+    </div>
+
+    <div class="extra-controls">
+        <div class="volume-control">
+            <span class="volume-icon">🔊</span>
+            <input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="100">
+        </div>
+    </div>
+</div>
+
+<script src="player.js"></script>
+</body>
+</html>
